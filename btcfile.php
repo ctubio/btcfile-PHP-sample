@@ -1,7 +1,7 @@
 <?php
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://api.btcfile.dev/content');
+curl_setopt($ch, CURLOPT_URL, 'http://api.btcfile.com/content');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // For the sake of making this sample self-contained, this script uses itself as the uploaded file
