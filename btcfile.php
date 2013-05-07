@@ -19,7 +19,7 @@ print_r($data);
 
 // Update the price. Any field can be updated at any time, except files which will always be the set of files provided during the initial upload
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, array('url' => $data['download_url'], // Passing the update url also works here
+curl_setopt($ch, CURLOPT_POSTFIELDS, array('update_url' => $data['update_url'], // You must pass the update_url for any update
 										   'price' => 7000000,
 										   ));
 
@@ -27,9 +27,9 @@ $data2 = json_decode(curl_exec($ch), true);
 
 print_r($data2);
 
-// If you want to read the information without updating anything, just pass either of the urls
+// If you want to read the information without updating anything, just pass the update_url
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, array('url' => $data['update_url'], // Passing the download url also works here
+curl_setopt($ch, CURLOPT_POSTFIELDS, array('update_url' => $data['update_url'], //You must pass the update_url when you just want to read data
 										  ));
 
 $data3 = json_decode(curl_exec($ch), true);
