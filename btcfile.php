@@ -1,7 +1,7 @@
 <?php
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://api.btcfile.dev/sell');
+curl_setopt($ch, CURLOPT_URL, 'http://api.btcfile.com/sell');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // For the sake of making this sample self-contained, this script uses itself as the uploaded file
@@ -38,7 +38,7 @@ print_r($data3);
 
 // To get an address to pay to and price information
 
-curl_setopt($ch, CURLOPT_URL, 'http://api.btcfile.dev/buy');
+curl_setopt($ch, CURLOPT_URL, 'http://api.btcfile.com/buy');
 curl_setopt($ch, CURLOPT_POSTFIELDS, array('download_url' => $data['download_url'], // You must pass the download_url when you want to obtain a new address
 										  ));
 
