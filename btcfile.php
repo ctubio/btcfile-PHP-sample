@@ -6,7 +6,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // For the sake of making this sample self-contained, this script uses itself as the uploaded file
 curl_setopt($ch, CURLOPT_POSTFIELDS, array('file' => '@' . __FILE__, // The only mandatory field is having at least one file, everything below else is optional and has default values
-										   'price' => 6000000, // Price of the content, expressed in satoshis
+										   'price' => 0.1, // Price of the content, expressed in BTC by default. Adding a currency parameter allows to set the price in a different currency
 										   'address' => '1vWb36Rzmqf9FfysuHCeAYs982iZwLJqm', // Address that will receive the value set in "price", should be the content owner
 										  ));
 
@@ -17,7 +17,8 @@ print_r($data);
 // Update the price. Any field can be updated at any time, except files which will always be the set of files provided during the initial upload
 
 curl_setopt($ch, CURLOPT_POSTFIELDS, array('update_url' => $data['update_url'], // You must pass the update_url for any update
-										   'price' => 7000000,
+										   'price' => 5,
+										   'currency' => 'USD', // Changing price + currency. If only the currency field is updated, the existing price is converted.
 										   ));
 
 $data2 = json_decode(curl_exec($ch), true);
